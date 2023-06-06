@@ -1,0 +1,45 @@
+baseURL = "https://mhsong55.github.io"
+title = "Warehouse"
+paginate = 5
+theme = "PaperMod"
+
+[params]
+  env = "production"
+  title = "Warehouse"
+  description = "description"
+  DateFormat = "2006-01-02"
+  defaultTheme = "light"
+  ShowBreadCrumbs = true
+  ShowToc = true
+  TocOpen = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+
+[params.homeInfoParams]
+Title = "Title"
+Content = "Content content <br> test"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://twitter.com/mhsong55"
+
+[[menu.main]]
+identifier = "about"
+name = "about"
+url = "/about/"
+weight = 10
+[[menu.main]]
+identifier = "archives"
+name = "archives"
+url = "/archives/"
+weight = 20
+[[menu.main]]
+identifier = "categories"
+name = "categories"
+url = "/categories/"
+weight = 30
+[[menu.main]]
+identifier = "tags"
+name = "tags"
+url = "/tags/"
+weight = 40
