@@ -15,6 +15,9 @@ theme = "PaperMod"
   ShowPostNavLinks = true
   ShowCodeCopyButtons = true
 
+[params.assets]
+disableHLJS = true
+
 [params.homeInfoParams]
 Title = "Title"
 Content = "Content content <br> test"
@@ -43,3 +46,11 @@ identifier = "tags"
 name = "tags"
 url = "/tags/"
 weight = 40
+
+[markup.highlight]
+# anchorLineNos: true
+codeFences = true
+guessSyntax = true
+lineNos = true
+style = "base16-snazzy"
+# style = "monokai"

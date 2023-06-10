@@ -1,7 +1,7 @@
 ---
 title: "Azure Application Gateway"
 date: 2022-04-30
-draft: false
+draft: true
 author: "MyungHoon Song"
 description: "Azure의 L7 load balancer"
 hideSummary: false
