@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Warehouse</title>
+    <link>https://mhsong55.github.io/posts/</link>
+    <description>Recent content in Posts on Warehouse</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mhsong55.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기</title>
+      <link>https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</guid>
+      <description>Hugo의 PaperMod 테마에 PowerShell Syntax highlight 기능을 추가하기 위해 삽질한 내용</description>
+    </item>
+    
+  </channel>
+</rss>

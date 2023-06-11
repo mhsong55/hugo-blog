@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기 | Warehouse</title>
+<meta name="keywords" content="Hugo, PaperMod">
+<meta name="description" content="Hugo의 PaperMod 테마에 PowerShell Syntax highlight 기능을 추가하기 위해 삽질한 내용">
+<meta name="author" content="MyungHoon Song">
+<link rel="canonical" href="https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f4098e9be400c4693ec4132db30da443ae15475147eced1d6632dd3ae1a8d10c.css" integrity="sha256-9AmOm&#43;QAxGk&#43;xBMtsw2kQ64VR1FH7O0dZjLdOuGo0Qw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mhsong55.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mhsong55.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mhsong55.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mhsong55.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mhsong55.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기" />
+<meta property="og:description" content="Hugo의 PaperMod 테마에 PowerShell Syntax highlight 기능을 추가하기 위해 삽질한 내용" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-10T00:00:00+00:00" /><meta property="og:site_name" content="Warehouse" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기"/>
+<meta name="twitter:description" content="Hugo의 PaperMod 테마에 PowerShell Syntax highlight 기능을 추가하기 위해 삽질한 내용"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://mhsong55.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기",
+      "item": "https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기",
+  "name": "[Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기",
+  "description": "Hugo의 PaperMod 테마에 PowerShell Syntax highlight 기능을 추가하기 위해 삽질한 내용",
+  "keywords": [
+    "Hugo", "PaperMod"
+  ],
+  "articleBody": "문제 상황 Hugo로 블로그를 만들기 위해서 여러 가지 테마를 찾던 중 PaperMod라는 테마가 깔끔해서 해당 테마를 사용하기로 결정했다. 기본 설정을 마치고 Syntax highlight 테스트를 진행하던 중 PowerShell에 대해서는 Syntax highlight가 적용되지 않는 것을 확인하였다. hugo는 기본적으로 chroma를 code highlighter로 사용하며 chroma에서는 PowerShell을 기본 지원한다. 다른 테마를 사용했을 때는 PowerShell이 지원되는 것을 확인하였다.\nChroma : Supported language 원인 이 현상의 원인은 PaperMod가 기본 Code highlighter로 highlight.js를 사용하기 때문이다. highlight.js는 code highlighting을 적용하고자 하는 언어를 체크해서 해당 언어들만 highlighting이 가능하게 한다.\nPaperMod는 highlight.js에서 지원하는 모든 언어를 지원하지는 않고 전체 언어 중 38개만 체크해서 적용한 것으로 보인다.\nthemes/PaperMod/assets/js/highlight.min.js\n해결 방법 highlight.js 파일에 PowerShell 추가 첫번째로 highlightjs.org/download/ 페이지에서 PowerShell을 체크해서 highlight.js 파일을 다시 다운로드 받아 적용하는 방법이 있다.\n다운로드 버튼을 클릭하면 highlight.zip 파일을 다운로드하게 된다. 압축을 풀면 아래와 같은 파일과 폴더들이 나오는데 그 중 highlight.min.js 파일을 theme/PaperMod/assets/js/highlight.min.js 파일에 덮어쓰면 된다.\nChroma 사용 앞에서 hugo는 code highlighter로 chroma를 기본 지원한다고 언급하였다. Chroma는 PowerShell 뿐만 아니라 Terraform도 지원한다. 이에 반해 highlight.js는 Terraform을 지원하지 않는다. Terraform에 대한 포스트도 블로그에 올릴 계획이었던 나로서는 기본 chroma를 적용하는 것이 더 나은 선택지이다.\nPaperMod에서는 highlight.js를 disable하고 chroma를 적용하는 기능도 지원하고 있다.\nhttps://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-faq/#using-hugos-syntax-highlighter-chroma\ntoml 형식으로 변경하면 아래와 같다.\n1 2 3 4 5 6 7 8 9 10 [params.assets] disableHLJS = true [markup.highlight] # anchorLineNos: true codeFences = true guessSyntax = true lineNos = true style = \"base16-snazzy\" # style = \"monokai\" ",
+  "wordCount" : "220",
+  "inLanguage": "en",
+  "datePublished": "2022-06-10T00:00:00Z",
+  "dateModified": "2022-06-10T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "MyungHoon Song"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Warehouse",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mhsong55.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mhsong55.github.io" accesskey="h" title="Warehouse (Alt + H)">Warehouse</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mhsong55.github.io/about/" title="about">
+                    <span>about</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mhsong55.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mhsong55.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mhsong55.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mhsong55.github.io">Home</a>&nbsp;»&nbsp;<a href="https://mhsong55.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      [Hugo] PaperMod 테마에 Syntax highlight 지원 언어 추가하기
+    </h1>
+    <div class="post-description">
+      Hugo의 PaperMod 테마에 PowerShell Syntax highlight 기능을 추가하기 위해 삽질한 내용
+    </div>
+    <div class="post-meta"><span title='2022-06-10 00:00:00 +0000 UTC'>2022-06-10</span>&nbsp;·&nbsp;MyungHoon Song
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%eb%ac%b8%ec%a0%9c-%ec%83%81%ed%99%a9" aria-label="문제 상황">문제 상황</a></li>
+                <li>
+                    <a href="#%ec%9b%90%ec%9d%b8" aria-label="원인">원인</a></li>
+                <li>
+                    <a href="#%ed%95%b4%ea%b2%b0-%eb%b0%a9%eb%b2%95" aria-label="해결 방법">해결 방법</a><ul>
+                        
+                <li>
+                    <a href="#highlightjs-%ed%8c%8c%ec%9d%bc%ec%97%90-powershell-%ec%b6%94%ea%b0%80" aria-label="highlight.js 파일에 PowerShell 추가"><code>highlight.js</code> 파일에 PowerShell 추가</a></li>
+                <li>
+                    <a href="#chroma-%ec%82%ac%ec%9a%a9" aria-label="Chroma 사용">Chroma 사용</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="문제-상황">문제 상황<a hidden class="anchor" aria-hidden="true" href="#문제-상황">#</a></h1>
+<p>Hugo로 블로그를 만들기 위해서 여러 가지 테마를 찾던 중 PaperMod라는 테마가 깔끔해서 해당 테마를 사용하기로 결정했다. 기본 설정을 마치고 Syntax highlight 테스트를 진행하던 중 PowerShell에 대해서는 Syntax highlight가 적용되지 않는 것을 확인하였다. hugo는 기본적으로 chroma를 code highlighter로 사용하며 chroma에서는 PowerShell을 기본 지원한다. 다른 테마를 사용했을 때는 PowerShell이 지원되는 것을 확인하였다.</p>
+<ul>
+<li><a href="https://github.com/alecthomas/chroma#supported-languages">Chroma : Supported language</a></li>
+</ul>
+<h1 id="원인">원인<a hidden class="anchor" aria-hidden="true" href="#원인">#</a></h1>
+<p>이 현상의 원인은 PaperMod가 기본 Code highlighter로 <code>highlight.js</code>를 사용하기 때문이다. <code>highlight.js</code>는 code highlighting을 적용하고자 하는 언어를 체크해서 해당 언어들만 highlighting이 가능하게 한다.</p>
+<p><img loading="lazy" src="highlightjs.org.1.png" alt="highlightjs.org.1.png"  />
+</p>
+<p>PaperMod는 <code>highlight.js</code>에서 지원하는 모든 언어를 지원하지는 않고 전체 언어 중 38개만 체크해서 적용한 것으로 보인다.</p>
+<ul>
+<li>
+<p><code>themes/PaperMod/assets/js/highlight.min.js</code></p>
+<p><img loading="lazy" src="highlight.min.js.png" alt="highlight.min.js.png"  />
+</p>
+</li>
+</ul>
+<h1 id="해결-방법">해결 방법<a hidden class="anchor" aria-hidden="true" href="#해결-방법">#</a></h1>
+<h2 id="highlightjs-파일에-powershell-추가"><code>highlight.js</code> 파일에 PowerShell 추가<a hidden class="anchor" aria-hidden="true" href="#highlightjs-파일에-powershell-추가">#</a></h2>
+<p>첫번째로 <a href="https://highlightjs.org/download/">highlightjs.org/download/</a> 페이지에서 PowerShell을 체크해서 <code>highlight.js</code> 파일을 다시 다운로드 받아 적용하는 방법이 있다.</p>
+<p><img loading="lazy" src="highlightjs.org.2.png" alt="highlightjs.org.2.png"  />
+</p>
+<p>다운로드 버튼을 클릭하면 <code>highlight.zip</code> 파일을 다운로드하게 된다. 압축을 풀면 아래와 같은 파일과 폴더들이 나오는데 그 중 <code>highlight.min.js</code> 파일을 <code>theme/PaperMod/assets/js/highlight.min.js</code> 파일에 덮어쓰면 된다.</p>
+<p><img loading="lazy" src="highlight.zip.png" alt="highlight.zip"  />
+</p>
+<h2 id="chroma-사용">Chroma 사용<a hidden class="anchor" aria-hidden="true" href="#chroma-사용">#</a></h2>
+<p>앞에서 hugo는 code highlighter로 chroma를 기본 지원한다고 언급하였다. Chroma는 PowerShell 뿐만 아니라 Terraform도 지원한다. 이에 반해 <code>highlight.js</code>는 Terraform을 지원하지 않는다. Terraform에 대한 포스트도 블로그에 올릴 계획이었던 나로서는 기본 chroma를 적용하는 것이 더 나은 선택지이다.</p>
+<p>PaperMod에서는 <code>highlight.js</code>를 disable하고 chroma를 적용하는 기능도 지원하고 있다.</p>
+<ul>
+<li>
+<p><a href="https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-faq/#using-hugos-syntax-highlighter-chroma">https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-faq/#using-hugos-syntax-highlighter-chroma</a></p>
+<p><img loading="lazy" src="using-hugos-syntax-highlighter-chroma.png" alt="using-hugos-syntax-highlighter-chrom"  />
+</p>
+</li>
+</ul>
+<p>toml 형식으로 변경하면 아래와 같다.</p>
+<div class="highlight"><div style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[params.assets]
+</span></span><span style="display:flex;"><span>disableHLJS = <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[markup.highlight]
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># anchorLineNos: true</span>
+</span></span><span style="display:flex;"><span>codeFences = <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>guessSyntax = <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>lineNos = <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>style = <span style="color:#5af78e">&#34;base16-snazzy&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># style = &#34;monokai&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mhsong55.github.io/tags/hugo/">Hugo</a></li>
+      <li><a href="https://mhsong55.github.io/tags/papermod/">PaperMod</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://mhsong55.github.io">Warehouse</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
