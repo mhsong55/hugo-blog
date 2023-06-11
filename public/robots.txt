@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mhsong55.github.io/hugo-blog/sitemap.xml
