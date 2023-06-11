@@ -8,6 +8,8 @@ hideSummary: true
 tags:
 - Hugo
 - PaperMod
+categories:
+- Blog
 ---
 
 # 문제 상황
