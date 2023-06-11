@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mhsong55.github.io/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/posts/papermod-theme%EC%97%90-syntax-highlight-%EC%A7%80%EC%9B%90-%EC%96%B8%EC%96%B4-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</loc>
     <lastmod>2022-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mhsong55.github.io/tags/hugo/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/tags/hugo/</loc>
     <lastmod>2022-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mhsong55.github.io/tags/papermod/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/tags/papermod/</loc>
     <lastmod>2022-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mhsong55.github.io/posts/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/posts/</loc>
     <lastmod>2022-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mhsong55.github.io/tags/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/tags/</loc>
     <lastmod>2022-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mhsong55.github.io/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/</loc>
     <lastmod>2022-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mhsong55.github.io/about/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/about/</loc>
   </url><url>
-    <loc>https://mhsong55.github.io/archives/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/archives/</loc>
   </url><url>
-    <loc>https://mhsong55.github.io/categories/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/categories/</loc>
   </url><url>
-    <loc>https://mhsong55.github.io/search/</loc>
+    <loc>https://mhsong55.github.io/hugo-blog/search/</loc>
   </url>
 </urlset>

@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Warehouse</title>
-    <link>https://mhsong55.github.io/tags/</link>
+    <link>https://mhsong55.github.io/hugo-blog/tags/</link>
     <description>Recent content in Tags on Warehouse</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mhsong55.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mhsong55.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
-      <link>https://mhsong55.github.io/tags/hugo/</link>
+      <link>https://mhsong55.github.io/hugo-blog/tags/hugo/</link>
       <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://mhsong55.github.io/tags/hugo/</guid>
+      <guid>https://mhsong55.github.io/hugo-blog/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PaperMod</title>
-      <link>https://mhsong55.github.io/tags/papermod/</link>
+      <link>https://mhsong55.github.io/hugo-blog/tags/papermod/</link>
       <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://mhsong55.github.io/tags/papermod/</guid>
+      <guid>https://mhsong55.github.io/hugo-blog/tags/papermod/</guid>
       <description></description>
     </item>
     
