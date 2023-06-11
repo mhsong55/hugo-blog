@@ -19,8 +19,8 @@ theme = "PaperMod"
 disableHLJS = true
 
 [params.homeInfoParams]
-Title = "Title"
-Content = "Content content <br> test"
+Title = "잡다구리"
+Content = "저장창고"
 
 [[params.socialIcons]]
 name = "twitter"
