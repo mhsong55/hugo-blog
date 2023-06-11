@@ -26,6 +26,14 @@ Content = "저장창고"
 name = "twitter"
 url = "https://twitter.com/mhsong55"
 
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/myunghoon-song-944b79261/"
+
+[[params.socialIcons]]
+name = "mail"
+url = "mailto:mhsong55@kakao.com"
+
 [[menu.main]]
 identifier = "about"
 name = "about"
