@@ -5,6 +5,16 @@
     <link>https://mhsong55.github.io/hugo-blog/categories/</link>
     <description>Recent content in Categories on Warehouse</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://mhsong55.github.io/hugo-blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mhsong55.github.io/hugo-blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://mhsong55.github.io/hugo-blog/categories/blog/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://mhsong55.github.io/hugo-blog/categories/blog/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
