@@ -13,7 +13,6 @@ categories:
 ---
 
 # 문제 상황
-[label](http://localhost:1313/hugo-blog/about/)
 Hugo로 블로그를 만들기 위해서 여러 가지 테마를 찾던 중 PaperMod라는 테마가 깔끔해서 해당 테마를 사용하기로 결정했다. 기본 설정을 마치고 Syntax highlight 테스트를 진행하던 중 PowerShell에 대해서는 Syntax highlight가 적용되지 않는 것을 확인하였다. hugo는 기본적으로 chroma를 code highlighter로 사용하며 chroma에서는 PowerShell을 기본 지원한다. 다른 테마를 사용했을 때는 PowerShell이 지원되는 것을 확인하였다.
 
 - [Chroma : Supported language](https://github.com/alecthomas/chroma#supported-languages)
